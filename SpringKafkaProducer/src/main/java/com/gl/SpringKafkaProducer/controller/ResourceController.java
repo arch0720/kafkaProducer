@@ -21,13 +21,13 @@ public class ResourceController {
 
     private static final String TOPIC_User="kafka-example-userDetails";
 
-    @RequestMapping(value = "/publishMsg/{msg}", method= RequestMethod.GET)
+    @RequestMapping(value = "/publish/{msg}", method= RequestMethod.GET)
     public String publishMsg(@PathVariable("msg") String msg){
         kafkaTemplate.send(TOPIC,msg) ;
      return "published Successfully";
     }
 
-    @RequestMapping(value = "/publish", method= RequestMethod.POST)
+    @RequestMapping(value = "/publish-user-details", method= RequestMethod.POST)
     public String publishUserDetails(@RequestBody User user){
         namekafkaTemplate.send(TOPIC_User,user) ;
         return "published Successfully";
